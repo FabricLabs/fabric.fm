@@ -1,0 +1,15 @@
+{
+  "name": "fabric.fm",
+  "version": "0.0.0",
+  "description": "Fabric's website.",
+  "main": "fabric.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Eric Martindale",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^0.8.0",
+    "maki": "git://github.com/martindale/maki"
+  }
+}

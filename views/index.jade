@@ -1,0 +1,103 @@
+extends layouts/default
+
+block content
+  .pusher
+    .ui.inverted.vertical.masthead.center.aligned.segment#graph-as-background
+        .ui.container
+          .ui.large.secondary.inverted.pointing.menu
+            a.toc.item
+              i.sidebar.icon
+            a.item.active Fabric
+            a.item Maki
+            //-.right.item
+              a.ui.inverted.button Log in
+              a.ui.inverted.button Sign Up
+        .ui.text.container
+          h1.ui.inverted.header
+            | The Serverless Web.
+          h2
+            | Fabric, the simple protocol for distributed applications.
+            a.ui.huge.primary.button(href="#subscribe")
+              | Learn More
+              i.right.arrow.icon
+    .ui.vertical.stripe.segment
+      .ui.middle.aligned.stackable.grid.container
+        .row
+          .eight.wide.column
+            h3.ui.header Simple Application Design with Maki
+            p Build applications with ease using <a href="https://github.com/martindale/maki/blob/master/docs/resources.md">Maki's service contract grammar</a>.  Define the resources and their behaviors, and immediately deploy to the Fabric network.
+            h3.ui.header Deploy to the Fabric Mesh Network
+            p Take any Maki application and deploy it to a decentralized mesh network, eliminating the need to have a server at all.
+          .six.wide.right.floated.column
+            //-img.ui.large.bordered.rounded.image(src="/img/white-image.png")
+            
+            pre
+              code.javascript(style="padding:0; font-size: 1.5em;").
+                var Maki = require('maki');
+                var Fabric = require('fabric');
+                
+                var app = new Maki();
+                var fabric = new Fabric();
+                
+                app.use(fabric);
+                
+                app.define('Widget', {
+                  attributes: {
+                    name: String
+                  }
+                });
+                
+                app.start();
+
+    .ui.vertical.stripe.quote.segment
+      .ui.equal.width.stackable.internally.celled.grid
+        .center.aligned.row
+          .column
+            h3 "Future of the Internet."
+            p Some guy, Bitcoin Core Developer
+          .column
+            h3 "Amazon is completely fucked."
+            p
+              img.ui.avatar.image(src="/img/nan.jpg")
+              b Some Talking Head
+              |  Founder, Something
+    .ui.vertical.stripe.segment
+      .ui.text.container
+        h3.ui.header Service Contracts, a new type of Smart Contract.
+        p We're building a network based on <strong>Service Committments</strong>, which allow us to immediately determine whether a particular participating node is abiding by the rules of an individual application.  These are almost like <strong>custom transaction validation rules</strong>, but for your application's infrastructure.
+        a.ui.large.button(href="/fabric.pdf") Read the Whitepaper
+          i.right.arrow.icon
+        h4.ui.horizontal.header.divider
+          a(href="#case-studies", name="case-studies") Case Studies
+        h3.ui.header Fabric Replacements for Existing Applications
+        p We've deployed a number of applications as examples of the kinds of applications that can be built using Maki &amp; Fabric.  These are the basic replacements for the services operated by centralized entities we enjoy today, but we're hoping you can build something better.
+        a.ui.large.button(href="https://maki.ericmartindale.com/examples") See the New Internet
+          i.right.arrow.icon
+    .ui.inverted.vertical.footer.segment
+      .ui.container
+        .ui.stackable.inverted.divided.equal.height.stackable.grid
+          .three.wide.column
+            h4.ui.inverted.header About
+            .ui.inverted.link.list
+              a.item(href="#") Protocol
+              a.item(href="#") Whitepaper
+              a.item(href="#") Roadmap
+              a.item(href="#") Contact Us
+          .three.wide.column
+            h4.ui.inverted.header Elsewhere
+            .ui.inverted.link.list
+              a.item(href="#", rel="me")
+                i.icon.github
+                |  GitHub
+              a.item(href="#", rel="me")
+                i.icon.twitter
+                |  Twitter
+              a.item(href="#", rel="me")
+                i.icon.facebook
+                |  Facebook
+              a.item(href="#", rel="me")
+                i.icon.medium
+                |  Medium
+          .seven.wide.column
+            h4.ui.inverted.header Copyleft
+            p We don't care about copyright, and in fact, want you to take anything we have here and run with it – especially if means the forward advancement of the idea.
