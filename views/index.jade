@@ -1,91 +1,133 @@
 extends layouts/default
 
 block content
+  style.
+    .ui.card img {
+      filter: grayscale(1);
+      -webkit-filter: grayscale(1);
+    }
+  
   .pusher
     .ui.inverted.vertical.masthead.center.aligned.segment#graph-as-background
         .ui.container
           .ui.large.secondary.inverted.pointing.menu
             a.toc.item
               i.sidebar.icon
-            a.item.active Fabric
-            a.item Maki
+            a.item.active(href="/") Fabric
+            a.item(href="/#contact") Contact
+            //-a.item Maki
             //-.right.item
               a.ui.inverted.button Log in
               a.ui.inverted.button Sign Up
         .ui.text.container
+          include partials/flash
+
           h1.ui.inverted.header
             | The Serverless Web.
           h2
             | Fabric, the simple protocol for distributed applications.
-            a.ui.huge.primary.button(href="#subscribe")
-              | Learn More
-              i.right.arrow.icon
+
+          form.ui.huge.form(action="/subscriptions", method="post")
+            .inline.fields
+              .eleven.wide.field.required
+                input(type="email", name="email", placeholder="you@youremail.com", required)
+              .field
+                button.ui.submit.huge.button.primary.tooltipped(title="We promise – no spam, ever.  We'll send you an email with a link to confirm your subscription.")
+                  i.newspaper.icon
+                  | Subscribe &raquo;
+
+    .ui.vertical.stripe.segment
+      .ui.middle.aligned.stackable.centered.grid.container
+        .row
+          .twelve.wide.column
+            h3.ui.header The Team
+            
+            .ui.three.doubling.cards
+              .ui.card
+                .image
+                  img(src="/img/eric.jpg")
+                .content
+                  h4.ui.header Eric Martindale
+                  .meta
+                    a(href="https://twitter.com/martindale")
+                      i.icon.twitter
+                    a(href="https://github.com/martindale")
+                      i.icon.github
+                  .description Founder, formerly <a href="https://twitter.com/bitpay">@BitPay</a>.
+              .ui.card
+                .image
+                  img(src="/img/yani.jpg")
+                .content
+                  h4.ui.header Yanislav Malahov
+                  .meta
+                    a(href="https://twitter.com/noyyy")
+                      i.icon.twitter
+                    a(href="https://github.com/foundationawesome")
+                      i.icon.github
+                  .description Founder, formerly <a href="https://ethereum.org">@Ethereum</a>.
+              .ui.card
+                .image
+                  img(src="/img/daniel.jpg")
+                .content
+                  h4.ui.header Daniel Barbour
+                  .meta
+                    a(href="https://twitter.com/vorathe")
+                      i.icon.twitter
+                    a(href="https://github.com/vorathe")
+                      i.icon.github
+                  .description Founder, Design Lead @ Agency.
+
+    .ui.vertical.stripe.segment
+      .ui.middle.aligned.stackable.centered.grid.container
+        .row
+          .eight.wide.column
+            h3.ui.header Built on Bitcoin
+            p Fabric is an extension to the Bitcoin network, allowing applications to be secured by the strongest network.
+            h3.ui.header Secure and Fair
+            p Nodes on the Fabric network are rewarded for their efforts, proportional to their contributions, using self-enforcing contracts.
+          .four.wide.column.right.aligned
+            //-img.ui.large.bordered.rounded.image(src="/img/white-image.png")
+            img.ui.medium.centered.image(src="/img/bitcoin-logo.png")
+
+    .ui.vertical.stripe.segment
+      .ui.middle.aligned.stackable.centered.grid.container
+        .row
+          .eight.wide.column.middle.aligned
+            i.massive.icons
+              i.icon.large.database
+              i.icon.corner.red.lock
+          .eight.wide.column
+            h3.ui.header Both Ephemeral &amp; Permanent Persistence
+            p Applications can choose to store data in ephemeral fashion <em>or</em> permanently, using Fabric's data persistence abstractions.
+            h3.ui.header Both Public &amp; Private Ledgers
+            p Fabric also offers a fully homomorphic encryption mechanism, allowing for data to be operated on safely and securely.
+
     .ui.vertical.stripe.segment
       .ui.middle.aligned.stackable.grid.container
         .row
-          .eight.wide.column
-            h3.ui.header Simple Application Design with Maki
-            p Build applications with ease using <a href="https://github.com/martindale/maki/blob/master/docs/resources.md">Maki's service contract grammar</a>.  Define the resources and their behaviors, and immediately deploy to the Fabric network.
-            h3.ui.header Deploy to the Fabric Mesh Network
-            p Take any Maki application and deploy it to a decentralized mesh network, eliminating the need to have a server at all.
-          .six.wide.right.floated.column
-            //-img.ui.large.bordered.rounded.image(src="/img/white-image.png")
-            
-            pre
-              code.javascript(style="padding:0; font-size: 1.5em;").
-                var Maki = require('maki');
-                var Fabric = require('fabric');
-                
-                var app = new Maki();
-                var fabric = new Fabric();
-                
-                app.use(fabric);
-                
-                app.define('Widget', {
-                  attributes: {
-                    name: String
-                  }
-                });
-                
-                app.start();
-
-    .ui.vertical.stripe.quote.segment
-      .ui.equal.width.stackable.internally.celled.grid
-        .center.aligned.row
-          .column
-            h3 "Future of the Internet."
-            p Some guy, Bitcoin Core Developer
-          .column
-            h3 "Amazon is completely fucked."
-            p
-              img.ui.avatar.image(src="/img/nan.jpg")
-              b Some Talking Head
-              |  Founder, Something
-    .ui.vertical.stripe.segment
-      .ui.text.container
-        h3.ui.header Service Contracts, a new type of Smart Contract.
-        p We're building a network based on <strong>Service Committments</strong>, which allow us to immediately determine whether a particular participating node is abiding by the rules of an individual application.  These are almost like <strong>custom transaction validation rules</strong>, but for your application's infrastructure.
-        a.ui.large.button(href="/fabric.pdf") Read the Whitepaper
-          i.right.arrow.icon
-        h4.ui.horizontal.header.divider
-          a(href="#case-studies", name="case-studies") Case Studies
-        h3.ui.header Fabric Replacements for Existing Applications
-        p We've deployed a number of applications as examples of the kinds of applications that can be built using Maki &amp; Fabric.  These are the basic replacements for the services operated by centralized entities we enjoy today, but we're hoping you can build something better.
-        a.ui.large.button(href="https://maki.ericmartindale.com/examples") See the New Internet
-          i.right.arrow.icon
+          //-.eight.wide.centered.column
+            h3.ui.header#subscribe Get Notified
+            p Subscribe to our list to receive updates as they're released.
+              include forms/subscribe
+          .eight.wide.centered.column
+            h3.ui.header#contact Contact Us
+            p If you think you can help, please get in touch.
+              include forms/contact
+              
     .ui.inverted.vertical.footer.segment
       .ui.container
         .ui.stackable.inverted.divided.equal.height.stackable.grid
           .three.wide.column
             h4.ui.inverted.header About
             .ui.inverted.link.list
-              a.item(href="#") Protocol
-              a.item(href="#") Whitepaper
-              a.item(href="#") Roadmap
-              a.item(href="#") Contact Us
+              //-a.item(href="/protocol") Protocol
+              //-a.item(href="/fabric.pdf") Whitepaper
+              //-a.item(href="/roadmap") Roadmap
+              a.item(href="/#contact") Contact Us
           .three.wide.column
             h4.ui.inverted.header Elsewhere
-            .ui.inverted.link.list
+            p Other links coming soon.
+            //-.ui.inverted.link.list
               a.item(href="#", rel="me")
                 i.icon.github
                 |  GitHub
@@ -100,4 +142,4 @@ block content
                 |  Medium
           .seven.wide.column
             h4.ui.inverted.header Copyleft
-            p We don't care about copyright, and in fact, want you to take anything we have here and run with it – especially if means the forward advancement of the idea.
+            p We don't particularly care for intellectual property, and in fact believe that if you are inspired by what we're working on – by all means, go forth and build.

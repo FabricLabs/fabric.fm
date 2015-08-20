@@ -1,0 +1,11 @@
+form.ui.huge.form(action="/contact", method="post")
+  .field.required
+    label Your Email Address
+    input(type="email", placeholder="you@example.com", name="from", required)
+  .field.required
+    label Your Message
+    textarea(name="message")
+  
+  button.ui.huge.right.floated.submit.button
+    i.icon.mail
+    | Send

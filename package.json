@@ -10,6 +10,8 @@
   "license": "MIT",
   "dependencies": {
     "http-server": "^0.8.0",
-    "maki": "git://github.com/martindale/maki"
+    "maki": "git://github.com/martindale/maki",
+    "maki-remote": "0.0.1",
+    "maki-sessions": "^0.1.0"
   }
 }
